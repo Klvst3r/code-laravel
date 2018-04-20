@@ -16,14 +16,14 @@ Route::get('/', function () {
 });
 
 
-Route::get('pagina',function(){
+/*Route::get('pagina',function(){
 	echo "Hola Klvst3r";
-});
+});*/
 
 
-Route::post('nuevapagina',function(){
+/*Route::post('nuevapagina',function(){
 	echo "Hola Klvst3r";
-});
+});*/
 /*
 Route::get('usuario/nuevo',function(){
 	echo "Hola nuevo usuario";
@@ -35,4 +35,10 @@ Route::get('usuario/{nombre}',function($usuario){
 });
 
 
-Route::Controller("producto", "ProductoController");
+/*Route::Controller("producto", "ProductoController");*/
+
+
+//La ruta pagina nos devolvera una vista
+Route::get('pagina',function(){
+	return view("pagina.index");
+});
