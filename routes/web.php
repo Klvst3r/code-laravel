@@ -33,3 +33,6 @@ Route::get('usuario/{nombre}',function($usuario){
 	//echo "Hola: " . $usuario ;
 	return "Hola: " . $usuario;
 });
+
+
+Route::Controller("producto", "ProductoController");
