@@ -63,3 +63,47 @@ Esto ya se lee desde la vista
 Si se quiere hacr algo practico vamos al archivo index.php y ponemos, 
 
 Esta es la forma generada por PHP-
+En algunos casos queremos mostrar datos en esta vista, lo que debemos hacer es pasarle parametros a esa ruta pagina
+
+Route::get('pagina/{numero}',function($numero){
+	return view("pagina.index")->with("n", $numero);
+}); 
+
+
+Esto pasara un parametro numero de pagina psarle el parametro a la vista debemos hacer
+
+colocarle un parametro de manera que pueda ser reconocida en la vista final y el valor de esa variable "numero", reconocida con "n"
+
+En la vista la reconoceremos con la letra "n".
+
+En la vista:
+
+
+Vista:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Hola <?php echo $n; ?></h1>
+	<h2>Hola</h2>
+</body>
+</html>
+
+
+Ruta:
+Route::get('pagina/{numero}',function($numero){
+	return view("pagina.index")->with("n", $numero);
+}); 
+
+Parametro
+http://code.laravel/pagina/Klvst3r
+http://code.laravel/pagina/1
+
+Hola Klvst3r
+Hola 1
+
+
+

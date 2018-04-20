@@ -39,6 +39,6 @@ Route::get('usuario/{nombre}',function($usuario){
 
 
 //La ruta pagina nos devolvera una vista
-Route::get('pagina',function(){
-	return view("pagina.index");
-});
+Route::get('pagina/{numero}',function($numero){
+	return view("pagina.index")->with("n", $numero);
+}); 
