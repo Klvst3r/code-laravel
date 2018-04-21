@@ -1,0 +1,223 @@
+!. Crear un Producto.
+
+Para iniciar un CRud Basico haremos.
+
+Dentro de la carpeta de rutas, hacer el ruteo completo del controlador de Producto
+
+routes/web.php
+
+El primer parametro sera la ruta donde estara el producto.
+
+producto es el lanzador y ProductoController sera el respectivo controlador con las acciones.
+
+Esto sera un Controlador Restful que nos devolvera con todas sus acciones que tenga internamente.
+
+1. En la rutas
+	routes/web.php
+		
+
+		Route::controller("producto","ProductoController");	
+
+
+
+
+2. Ahora es ir al controlador y generar las funcionespara poder crear.
+
+app/Http/Controllers/ProductoController.php
+
+
+class ProductoController extends Controller
+{
+    public function getCrear(){
+    	return view("producto.crear");
+    }
+}
+
+	
+Pondremos la primer accion que sera crear, que nos retornara una vista de la carpeta resources/views/producto
+
+Que contendra dos archivos 
+
+crear.blade.php
+
+Y escribimos en la vista lo siguiente
+
+(nada)
+
+
+Aunque este codigo era funcional para Laravel 5.2 en la version 5.6 cambia un poco la estructura por lo que eliminaremos el archivo del controlador creado inicialemnte
+
+ProductoController para crearlo desde artisan con el siguiente comando:
+
+ php artisan make:controller ProductoController --resource
+
+
+Esto generara una estructura del Controlador ProductoController
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ProductoController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+        
+        
+    }
+
+    
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+        return view("producto.crear");
+    }
+
+   
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}
+
+
+
+Introducimos dentro del metodo create la vista 
+
+public function create()
+    {
+        //
+        return view("producto.crear");
+    }
+
+
+Esta apunta a las vistas creadas en:
+
+Donde create es el metodo o accion del controlador
+
+
+resources/views/producto/
+
+Dentro tenemos dos archivos: 
+
+	crear.blade.php
+	template.php
+
+En template.blade.php
+
+Generados un template, haiendo uso de las librerias de bootstrap
+
+Escribimos
+bs3-template
+
+Y tendremos preparado nuestra plantilla del CRUD Productos.
+
+Dentro se crea un div.row para contener:
+	@yield("contenido")
+
+Que es un apartado para todo lo que sera el contenido que se vaya poniendo dentro de cada sección de nuestras vistas que dependan de esta plantilla, aca se agrupara todo el contenido 	
+
+Dentro de la pnatilla crear.blade.php
+
+Extendinedo de producto.template O La pantilla el template, "producto" por que esta dentro de la carpeta producto.
+
+@extends("producto.template")
+
+
+Por medio de @section, que se agrupe el contenido en la seccion con el nomnre "contenido"
+@section("contenido")
+
+Se abre la tabla seccion corecta,ente y dentro pondremos un formulario dentro de un col-md
+.col-md-4
+	bs3-form
+Formamos un formulario para crear nuestro formulario para el producto 	
+
+Se cierra la seccion	
+@endsection
+
+Ya finalente en el navegador escribimos
+
+http://code.laravel/producto/create
+
+
+Para mostrar un formulario de un nuevo recurso invocamos al metodo create o crear de laravel.
+
+Referencias de Routing con Controllers
+
+https://www.cloudways.com/blog/controllers-middleware-laravel/
+https://stackoverflow.com/questions/23505875/laravel-routeresource-vs-routecontroller
+
+
+https://laravel.com/docs/5.0/controllers
+Section
+	#RESTful Resource Controllers
+
+https://laravel.com/docs/5.6/routing
+
+	

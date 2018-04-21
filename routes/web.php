@@ -29,16 +29,32 @@ Route::get('usuario/nuevo',function(){
 	echo "Hola nuevo usuario";
 });*/
 
-Route::get('usuario/{nombre}',function($usuario){
+/*Route::get('usuario/{nombre}',function($usuario){
 	//echo "Hola: " . $usuario ;
 	return "Hola: " . $usuario;
-});
+});*/
 
 
 /*Route::Controller("producto", "ProductoController");*/
 
 
 //La ruta pagina nos devolvera una vista
-Route::get('pagina/{numero}',function($numero){
+/*Route::get('pagina/{numero}',function($numero){
 	return view("pagina.index")->with("n", $numero);
-}); 
+}); */
+
+//Reoute::controller is deprecated
+//https://laracasts.com/discuss/channels/laravel/routecontroller-in-laravel-53
+//https://stackoverflow.com/questions/23505875/laravel-routeresource-vs-routecontroller
+
+// Another
+//https://www.cloudways.com/blog/controllers-middleware-laravel/
+
+//Route::controller('producto','ProductoController'); 
+
+Route::resource('producto','ProductoController'); 
+
+/*Route::resource('producto', 'ProductoController', [
+    'only' => ['index', 'show']
+]);*/
+
